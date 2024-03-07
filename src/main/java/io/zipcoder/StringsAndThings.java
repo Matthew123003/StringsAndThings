@@ -1,6 +1,9 @@
 package io.zipcoder;
 
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * @author tariq
  */
@@ -15,7 +18,11 @@ public class StringsAndThings {
      *           countYZ("day fyyyz"); // Should return 2
      */
     public Integer countYZ(String input){
-        return null;
+        Matcher match = Pattern.compile("[yz]\\b").matcher(input);
+        int count = 0;
+        while(match.find())
+            count++;
+        return count;
     }
 
     /**
@@ -28,7 +35,8 @@ public class StringsAndThings {
      *           removeString("Hello there", "x") // Should return "Hello there"
      */
     public String removeString(String base, String remove){
-        return null;
+
+        return base.replaceAll(remove, "");
     }
 
     /**
@@ -39,8 +47,15 @@ public class StringsAndThings {
      *           containsEqualNumberOfIsAndNot("This is notnot") // Should return true
      *           containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
-    public Boolean containsEqualNumberOfIsAndNot(String input){
-        return null;
+    public Boolean containsEqualNumberOfIsAndNot(String input) {
+       String original = input;
+        int is = original.length() - input.replaceAll("is","").length();
+        int not  = original.length() - input.replaceAll("not"," ").length();
+        if(is == not){
+            return true;
+        }else {
+            return false;
+        }
     }
 
     /**
@@ -51,6 +66,11 @@ public class StringsAndThings {
      *           gHappy("xxggyygxx") // Should return  false
      */
     public Boolean gIsHappy(String input){
+        for(int i = 0; i < input.length(); i++){
+            
+        }
+
+
         return null;
     }
 
@@ -63,6 +83,16 @@ public class StringsAndThings {
      *            countTriple("a") // Should return 0
      */
     public Integer countTriple(String input){
-        return null;
+        int length = input.length();//get string length
+        int counter = 0;//initialize a counter for triples
+        //Loop through the string to find triples
+        for(int i = 0; i < length - 2; i++){
+            char temp = input.charAt(i);//Get character at index of i
+            //Check if the character at the index of i is the same as the next two characters
+            if(temp == input.charAt(i + 1) && temp == input.charAt(i + 2)){
+                counter++;//increment counter if triple is found
+            }
+        }
+        return counter;//return total count of triples
     }
 }
