@@ -67,7 +67,15 @@ public class StringsAndThings {
      */
     public Boolean gIsHappy(String input){
         for(int i = 0; i < input.length(); i++){
-            
+            if(input.charAt(i) == 'g'){
+                if(i > 0 && input.charAt(i - 1) == 'g'){
+                    return true;
+                }else if(i > 0 && input.charAt(i + 1) == 'g'){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
         }
 
 
